@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  
+  <form action="/add.html" method="post" accept-charset="utf-8">
+  	<input type="text" name="title" />
+	<input type="submit" value="提交">
+  </form>
+  <% blogData.length %>
+  
+  	<% if (blogData.length) {%>
+  	<ul>
+		<% blogData.forEach(function(row){ %>	
+		<li>
+			<form action="/action.html" method="post">
+				<input type="text" value="<%= row.title %>" name="title" />
+				<input type="hidden" value="<%= row.id %>" name="id" />
+				<button type="submit" value="update" name="action">修改</button>
+				<button type="submit" value="remove" name="action">删除</button>
+			</form>
+		</li>
+		<% }) %>
+	</ul>
+	<% } %>
+  </body>
+</html>
